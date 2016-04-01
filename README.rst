@@ -79,6 +79,12 @@ Wheels:
 
     $ python setup.py bdist_wheel
 
+Universal Wheels:
+
+.. code-block:: bash
+
+    python setup.py bdist_wheel --universal
+
 Update the dependencies for tests
 =================================
 
@@ -98,3 +104,35 @@ Generating the documentation
 .. code-block:: bash
 
     $ python setup.py docs
+
+Release and upload to Pypi
+==========================
+
+- Create you source distribution
+
+  .. code-block:: bash
+
+      $ python setup.py sdist
+
+- Upload your work to Github
+- Create a new release on Github
+- Fetch changes on local:
+
+  .. code-block:: bash
+
+      $ git fetch --all
+      $ git pull --rebase
+
+- Build source and distribution:
+
+  .. code-block:: bash
+
+      $ rm -rfv dist/*
+      $ python setup.py bdist_wheel
+      $ python setup.py bdist_wheel --universal
+
+- Upload distributions:
+
+  .. code-block:: bash
+
+      $ twine upload dist/*
