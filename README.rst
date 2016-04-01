@@ -108,17 +108,13 @@ Generating the documentation
 Release and upload to Pypi
 ==========================
 
+- Commit everything localy
 
-- Upload your work to Github
-
-- Create a new release on Github
-
-- Fetch changes on local:
+- Create the release tag
 
   .. code-block:: bash
 
-      $ git fetch --all
-      $ git pull --rebase
+      git tag 0.?.?
 
 - Create you source distribution to regenerate ChangeLog properly
 
@@ -126,14 +122,19 @@ Release and upload to Pypi
 
       $ python setup.py sdist
 
-- Repush to Github, edit the tag
+- Overwrite the release tag
+
+  .. code-block:: bash
+
+      git tag --force 0.?.?
+
+- Push to Github, create a release
 
 - Build source and distribution:
 
   .. code-block:: bash
 
       $ rm -rfv dist/*
-      $ python setup.py sdist
       $ python setup.py bdist_wheel
       $ python setup.py bdist_wheel --universal
 
