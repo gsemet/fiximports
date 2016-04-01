@@ -135,6 +135,7 @@ Release and upload to Pypi
   .. code-block:: bash
 
       $ rm -rfv dist/*
+      $ python setup.py bdist
       $ python setup.py bdist_wheel
       $ python setup.py bdist_wheel --universal
 
