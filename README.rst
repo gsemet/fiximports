@@ -128,7 +128,7 @@ Release and upload to Pypi
 
       git tag --force 0.?.?
 
-- Push to Github, create a release
+- Push to Github, create a release with the same tag
 
 - Build source and distribution:
 
