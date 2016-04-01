@@ -1,0 +1,15 @@
+coverage>=3.6
+discover
+fixtures>=0.3.12
+flake8>=2.5
+mock>=1.0
+python-subunit
+sphinx>=1.2
+testrepository>=0.0.17
+testresources<0.3
+testscenarios>=0.4,<0.5
+testtools>=0.9.32
+pip-tools>=1.0
+sphinx_rtd_theme>=0.1.9
+pytest>=2.9.1
+pytest-cov>=2.2.1

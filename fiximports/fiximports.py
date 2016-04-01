@@ -8,6 +8,7 @@ from __future__ import division
 from __future__ import print_function
 
 
+import argparse
 import re
 import sys
 
@@ -104,12 +105,7 @@ class FixImports(object):
                 self.group_start = None
 
         if splitImportStatements:
-            iter = lines.__iter__()
-            while True:
-                try:
-                    line = iter.__next__()
-                except StopIteration:
-                    break
+            for line in lines:
                 if self.isImportLine(line):
                     # join any continuation lines (\\)
                     while line[-1] == '\\':
@@ -166,11 +162,13 @@ class FixImports(object):
 
 def main():
     '''I am the main method'''
-    if len(sys.argv) != 2:
-        print("usage: %s <python file>" % (sys.argv[0]))
-        return 1
 
-    filename = sys.argv[1]
+    parser = argparse.ArgumentParser(description='Fix Python Import Statements')
+    parser.add_argument('filename', metavar='FILENAME',
+                        help='Path or glob of Python files to fix')
+
+    args = parser.parse_args()
+    filename = args.filename
 
     with open(filename, 'r') as filedesc:
         data = filedesc.read()
