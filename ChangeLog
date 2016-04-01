@@ -1,6 +1,7 @@
 CHANGES
 =======
 
-* Add PBR, test, build instructions, flake8
+* Add link to online documentation in README
+* Add PBR, test, build instructions, flake8, travis yaml
 * Import fiximports tool
 * Initial commit

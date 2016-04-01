@@ -3,7 +3,10 @@ Python Fix Imports
 ******************
 
 Python Fix Imports is a Python module that can automatically reorganize the ``import`` statements of
-your Python script. Please read the documenation for more information.
+your Python script.
+
+Please read the
+`online documenation for more information <http://fiximports.readthedocs.org/en/latest/>`_.
 
 Example
 =======
