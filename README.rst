@@ -2,6 +2,8 @@
 Python Fix Imports
 ******************
 
+|travis-badge|_ |codecov-badge|_ |readthedocs-badge|_
+
 Python Fix Imports is a Python module that can automatically reorganize the ``import`` statements of
 your Python script, sorting them in respect the "one import, one line" principle.
 
@@ -150,3 +152,11 @@ Release and upload to Pypi
   .. code-block:: bash
 
       $ twine upload dist/*
+
+
+.. |travis-badge| image:: https://travis-ci.org/Stibbons/fiximports.svg?branch=master
+.. _travis-badge: https://travis-ci.org/Stibbons/fiximports
+.. |codecov-badge| image:: http://codecov.io/github/Stibbons/fiximports/coverage.svg?branch=master
+.. _codecov-badge: http://codecov.io/github/Stibbons/fiximports?branch=master
+.. |readthedocs-badge| image:: https://readthedocs.org/projects/fiximports/badge/?version=latest
+.. _readthedocs-badge: https://readthedocs.org/projects/fiximports/builds/
