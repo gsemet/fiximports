@@ -4,10 +4,16 @@ Python Fix Imports
 
 |travis-badge|_ |codecov-badge|_ |readthedocs-badge|_
 
-Python Fix Imports is a Python module that can automatically reorganize the ``import`` statements of
-your Python script, sorting them in respect the "one import, one line" principle.
+Python Fix Imports is a Python executable that can automatically reorganize the ``import``
+statements of your Python script, by splitting single import statement importing several package
+into as many import statement as imported module ("one import, one line" principle), and sorting
+these import statements respecting position of *group* of them.
 
-Please read the
+The main advantage for this method is to strictly restrict the forms of import statement and
+facilitate multiple code branch merges and rebase, while still allowing to specify a given order if
+it is the wish of the developer.
+
+Please read the full rational
 `online documenation for more information <http://fiximports.readthedocs.org/en/latest/>`_.
 
 Sublime Text 3 users can use my
@@ -27,6 +33,8 @@ Fix imports allows you to automatically turn:
     from any_module import a, \
                     c,
 
+    from a_module_that_should_be import at, after, all_others
+
 into:
 
 .. code:: python
@@ -39,6 +47,10 @@ into:
     from any_module import f
     from other_module import x
     from other_module import z
+
+    from a_module_that_should_be import after
+    from a_module_that_should_be import all_others
+    from a_module_that_should_be import at
 
 
 Fiximport installation

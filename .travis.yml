@@ -32,7 +32,20 @@ before_script:
 
 script:
     - "fiximports -h"
+    - "python setup.py sdist"
+    - "python setup.py bdist"
+    - "python setup.py bdist_wheel"
+    - "python setup.py bdist_wheel --universal"
     - "python setup.py test"
 
 after_success:
     "coveralls"
+
+deploy:
+  provider: pypi
+  user: "Stibbons"
+  password:
+    secure: SECURE_TRAVIS_PASSWORD
+on:
+    tags: true
+    branch: master
