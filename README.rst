@@ -29,9 +29,9 @@ Fix imports allows you to automatically turn:
     from any_module import d, f
     from other_module import z, x
     from any_module import (b,
-                     e)
+                            e)
     from any_module import a, \
-                    c,
+                           c,
 
     from a_module_that_should_be import at, after, all_others
 
@@ -128,6 +128,19 @@ Generating the documentation
 Release and upload to Pypi
 ==========================
 
+.. note::
+
+    In the normal case, package is automatically published to Pypi after successful Travis build.
+
+    To release using this automatic procedure, simply create a new tag, push it (do not forget to do
+    ``git push --tags``). When successful, Travis will automatically publish a new version on Pypi.
+
+    Promote the tag to a proper Release in Github to align everything.
+
+    PS: ChangeLog will be properly updated on Pypi, not on Github (you need to align it manually).
+
+Here is the manual release procedure.
+
 - Commit everything localy
 
 - Create the release tag
@@ -173,4 +186,4 @@ Release and upload to Pypi
 .. |readthedocs-badge| image:: https://readthedocs.org/projects/fiximports/badge/?version=latest
 .. _readthedocs-badge: https://readthedocs.org/projects/fiximports/builds/
 .. |pypi-badge| image:: https://badge.fury.io/py/fiximports.svg
-.. _pypi-badge: https://badge.fury.io/py/fiximports
+.. _pypi-badge: https://pypi.python.org/pypi/fiximports/
