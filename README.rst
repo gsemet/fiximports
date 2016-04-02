@@ -3,10 +3,13 @@ Python Fix Imports
 ******************
 
 Python Fix Imports is a Python module that can automatically reorganize the ``import`` statements of
-your Python script.
+your Python script, sorting them in respect the "one import, one line" principle.
 
 Please read the
 `online documenation for more information <http://fiximports.readthedocs.org/en/latest/>`_.
+
+Sublime Text 3 users can use my
+`Python Fix Imports<https://packagecontrol.io/packages/Python%20Fix%20Imports>`_ plugin.
 
 Example
 =======
@@ -16,6 +19,7 @@ Fix imports allows you to automatically turn:
 .. code:: python
 
     from any_module import d, f
+    from other_module import z, x
     from any_module import (b,
                      e)
     from any_module import a, \
@@ -31,6 +35,8 @@ into:
     from any_module import d
     from any_module import e
     from any_module import f
+    from other_module import x
+    from other_module import z
 
 
 Fiximport installation
