@@ -1,22 +1,37 @@
-sudo: false
-
 language: python
 
 python:
     - "2.6"
     - "2.7"
-    - "3.2"
     - "3.3"
+    - "3.4"
+    - "3.5"
+    - "pypy"
+    - "pypy3"
+
+env:
+    - ""
+    - "LC_ALL=C LC_CTYPE=C"
+
+matrix:
+  allow_failures:
+    - python: "pypy3"
 
 install:
-    - pip install --upgrade pip
-    - pip install -r requirements.txt
-    - pip install -r test-requirements.txt
-    - python setup.py install
+    - "pip install --upgrade pip"
+    - "pip install -r requirements.txt --use-mirrors"
+    - "pip install -r test-requirements.txt --use-mirrors"
+    - "pip install coverage"
+    - "pip install coveralls"
+    # Output the env, because the travis docs just can't be trusted
+    - "env"
 
 before_script:
-  - pip list
+  - "pip list"
 
 script:
-    - python setup.py test
+    - "fiximports -h"
+    - "python setup.py test"
 
+after_success:
+    "coveralls"
