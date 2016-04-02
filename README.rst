@@ -2,7 +2,7 @@
 Python Fix Imports
 ******************
 
-|travis-badge|_ |codecov-badge|_ |readthedocs-badge|_
+|travis-badge|_ |codecov-badge|_ |readthedocs-badge|_ |pypi-badge|_
 
 Python Fix Imports is a Python executable that can automatically reorganize the ``import``
 statements of your Python script, by splitting single import statement importing several package
@@ -17,7 +17,7 @@ Please read the full rational
 `online documenation for more information <http://fiximports.readthedocs.org/en/latest/>`_.
 
 Sublime Text 3 users can use my
-`Python Fix Imports<https://packagecontrol.io/packages/Python%20Fix%20Imports>`_ plugin.
+`Python Fix Imports <https://packagecontrol.io/packages/Python%20Fix%20Imports>`_ plugin.
 
 Example
 =======
@@ -172,3 +172,5 @@ Release and upload to Pypi
 .. _codecov-badge: http://codecov.io/github/Stibbons/fiximports?branch=master
 .. |readthedocs-badge| image:: https://readthedocs.org/projects/fiximports/badge/?version=latest
 .. _readthedocs-badge: https://readthedocs.org/projects/fiximports/builds/
+.. |pypi-badge| image:: https://badge.fury.io/py/fiximports.svg
+.. _pypi-badge: https://badge.fury.io/py/fiximports
