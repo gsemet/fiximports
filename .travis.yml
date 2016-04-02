@@ -48,4 +48,3 @@ deploy:
     secure: SECURE_TRAVIS_PASSWORD
 on:
     tags: true
-    branch: master
