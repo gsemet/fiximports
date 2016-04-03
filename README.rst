@@ -31,7 +31,7 @@ Fix imports allows you to automatically turn:
     from any_module import (b,
                             e)
     from any_module import a, \
-                           c,
+                           c
 
     from a_module_that_should_be import at, after, all_others
 
