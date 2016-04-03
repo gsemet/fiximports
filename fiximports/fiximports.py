@@ -11,6 +11,7 @@ from __future__ import print_function
 import argparse
 import re
 import sys
+import six
 
 
 class FixImports(object):
@@ -105,11 +106,17 @@ class FixImports(object):
                 self.group_start = None
 
         if splitImportStatements:
-            for line in lines:
+            iter = six.next(lines)
+            while True:
+                line = line.strip()
+                try:
+                    line = six.next()
+                except StopIteration:
+                    break
                 if self.isImportLine(line):
                     # join any continuation lines (\\)
                     while line[-1] == '\\':
-                        line = line[:-1] + iter.__next__()
+                        line = line[:-1] + six.next()
                     if self.group_start is None:
                         self.group_start = len(newlines)
 
@@ -119,7 +126,7 @@ class FixImports(object):
                             module = match.group(1)
                             imports = [s.strip() for s in match.group(2).split(",")]
                             for imp in imports:
-                                newlines.append("from %s import %s" % (module, imp))
+                                newlines.append("from {} import {}".format(module, imp))
                             continue
                 else:
                     maybeEndGroup()
