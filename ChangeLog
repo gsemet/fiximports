@@ -1,6 +1,11 @@
 CHANGES
 =======
 
+0.1.14
+------
+
+* Try to release to travis only on tag branch
+
 0.1.13
 ------
 
