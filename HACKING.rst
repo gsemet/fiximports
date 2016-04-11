@@ -103,7 +103,13 @@ Here is the manual release procedure.
 
       git tag --force 0.?.?
 
-- Push to Github, create a release with the same tag
+- Push to Github with:
+
+  .. code-block:: bash
+
+      git push --tags
+
+- create a release with the same tag
 
 - Build source and distribution:
 

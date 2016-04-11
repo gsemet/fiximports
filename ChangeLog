@@ -1,6 +1,56 @@
 CHANGES
 =======
 
+0.1.12
+------
+
+* Update ChangeLog and developer documentation
+
+0.1.11
+------
+
+* Update README
+* Fix Typo
+
+0.1.10
+------
+
+* Fix iteration
+
+0.1.9
+-----
+
+* Update URL and README
+
+0.1.8
+-----
+
+* Add Pypi badge
+
+0.1.7
+-----
+
+* Setting password from mac
+
+0.1.6
+-----
+
+* travis deploy can build
+* Don't restrict travis deploy on any branch
+
+0.1.5
+-----
+
+* Configuring autodeploy for travis
+* Add badges in README
+* Finaly add the install in travis build
+* Require setuptools > 17.0 for travis build
+* No use mirror on travis
+* Update Travis config
+* Update README
+* Update README
+* Update README
+
 0.1.4
 -----
 
