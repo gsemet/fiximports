@@ -67,8 +67,8 @@ Generating the documentation
 
     $ python setup.py docs
 
-Release and upload to Pypi
-==========================
+Release and automatic deployment to Pypi
+========================================
 
 .. note::
 
@@ -83,9 +83,7 @@ Release and upload to Pypi
 
 Here is the manual release procedure.
 
-- Commit everything localy
-
-- Create the release tag
+- Create the release tag on HEAD
 
   .. code-block:: bash
 
@@ -101,15 +99,24 @@ Here is the manual release procedure.
 
   .. code-block:: bash
 
+      git commit --amend --all --no-edit
       git tag --force 0.?.?
 
-- Push to Github with:
+- Push to Github ensuring tags are **also pushed**, with:
 
   .. code-block:: bash
 
-      git push --tags
+      git push origin master --tags
 
-- create a release with the same tag
+- On GitHub, create promote the tag to a "Release"
+
+- When build is successful, Travis automatically promote binaries to Pypi
+
+.. note:: Documentation is automatically built by ReadTheDoc
+
+
+Manual deployment to Pypi
+=========================
 
 - Build source and distribution:
 
