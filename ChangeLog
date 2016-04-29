@@ -1,6 +1,11 @@
 CHANGES
 =======
 
+0.1.15
+------
+
+* Fix travis deploy script
+
 0.1.14
 ------
 

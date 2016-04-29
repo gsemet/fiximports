@@ -44,6 +44,6 @@ deploy:
   distributions: sdist bdist_wheel
   password:
     secure: ouAsPA6qXBCwuq1xRngEAmysitFVE2a7zZcEv9a9jTOPxZrmOoPA3OyznENjFW5wdL44e4vpyM5QkQ3E8wH4OrgfkVL8nHpoFmt2XIx0ihJCdAJTAK2Kru2NJ4MxG78WhQKyzQwfaYhQi2yKFjRqrLK148kv2Y7ZsRdq35BPQwN8A2uEpHSel8Y3O+OrivXbaLwsvIHIXC9CDTHGh6Jvo3GxSYUMbO+742vSjPo/C6VSB622kFjpRcnJFnW9O2n5rHHN8s2d0wbXKZvza4VGwI4I4+F4SXFHOR7pEbalTADrhc5E1z2acoN3L00oTXJPFiYPtKlaMOojcUSaGbP1CBZXAKl1snfYJ+GuXsN3iVXc5GVgr4EuCFhj979wTxRs11jQFE2LW0JsN8p3U3RaNrveb5MoX4l/NLzeWuPR+WsJR3kB0YFwCvk9WoQyQrCvk9cmPTPRZyPiIMJLBiHQ9+jHNg3iQxmU+BCIfWE1x33R2RoqU6ZOe0Ye/tEv+rgqaKvyRAbJx1Fdg8rRuhaP+Nt4FSUHANHtJ5wnGepabbD6bHjhJ79LVynBCbWING+F2r2AdxxA9Ijrfe0nRELpjYqqv9RYAOcDdhPdiyg58u6aEiLKIT6zcNIyl9SGciplmvxT6/pzlgL8X9eKmf+JLchkOOQh6cAAMvtCsdjZJjQ=
-on:
-  all_branches: true
-  condition: $TRAVIS_TAG != ""
+  on:
+    all_branches: true
+    condition: $TRAVIS_TAG != ""
