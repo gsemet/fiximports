@@ -2,7 +2,7 @@
 Python Fix Imports
 ******************
 
-|travis-badge|_ |codecov-badge|_ |readthedocs-badge|_ |pypi-badge|_
+|travis-badge|_ |codecov-badge|_ |readthedocs-badge|_ |pypi-badge|_ |download-badge|_
 
 Python Fix Imports is a Python executable that can automatically reorganize the ``import``
 statements of your Python script, by splitting single import statement importing several package
@@ -69,3 +69,5 @@ Fiximport installation
 .. _readthedocs-badge: https://readthedocs.org/projects/fiximports/builds/
 .. |pypi-badge| image:: https://badge.fury.io/py/fiximports.svg
 .. _pypi-badge: https://pypi.python.org/pypi/fiximports/
+.. |download-badge| image:: https://img.shields.io/pypi/dm/fiximports.svg
+.. _download-badge: https://pypi.python.org/pypi/fiximports
