@@ -106,17 +106,17 @@ class FixImports(object):
                 self.group_start = None
 
         if splitImportStatements:
-            iter = six.next(lines)
+            it_lines = iter(lines)
             while True:
                 line = line.strip()
                 try:
-                    line = six.next()
+                    line = six.next(it_lines)
                 except StopIteration:
                     break
                 if self.isImportLine(line):
                     # join any continuation lines (\\)
                     while line[-1] == '\\':
-                        line = line[:-1] + six.next()
+                        line = line[:-1] + it_lines.next()
                     if self.group_start is None:
                         self.group_start = len(newlines)
 
