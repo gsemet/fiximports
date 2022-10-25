@@ -172,22 +172,27 @@ def main():
 
     parser = argparse.ArgumentParser(description='Fix Python Import Statements')
     parser.add_argument('filename', metavar='FILENAME',
-                        help='Path or glob of Python files to fix')
+                        help='Path of Python files to fix', nargs='+')
 
     args = parser.parse_args()
-    filename = args.filename
 
-    with open(filename, 'r') as filedesc:
-        data = filedesc.read()
-    res, content = FixImports().sortImportGroups(filename, data)
-    if not res:
-        return 1
+    errors = False
+    for filename in args.filename:
+        with open(filename, 'r') as filedesc:
+            data = filedesc.read()
 
-    with open(filename, 'w') as filedesc:
-        filedesc.write(content)
-    if data != content:
-        print("import successfully reordered for file: %s" % (filename))
-    return 0
+        res, content = FixImports().sortImportGroups(filename, data)
+        if not res:
+            errors = True
+            continue
+
+        with open(filename, 'w') as filedesc:
+            filedesc.write(content)
+        if data != content:
+            print("import successfully reordered for file: %s" % (filename))
+
+    return 1 if errors else 0
+
 
 if __name__ == "__main__":
     sys.exit(main())
