@@ -88,7 +88,7 @@ class FixImports(object):
         '''
         lines = data.split("\n")
         res = True
-        for cur_line_nb, line in enumerate(lines):
+        for cur_line_nb, line in enumerate(lines, 1):
             if not self.analyzeLine(filename, line, cur_line_nb):
                 if not self.isBadLineFixable(line):
                     res = False
@@ -108,7 +108,6 @@ class FixImports(object):
         if splitImportStatements:
             it_lines = iter(lines)
             while True:
-                line = line.strip()
                 try:
                     line = six.next(it_lines)
                 except StopIteration:
@@ -116,27 +115,26 @@ class FixImports(object):
                 if self.isImportLine(line):
                     # join any continuation lines (\\)
                     while line[-1] == '\\':
-                        line = line[:-1] + it_lines.next()
+                        line = line[:-1] + six.next(it_lines)
                     if self.group_start is None:
                         self.group_start = len(newlines)
 
-                    if self.isBadLineFixable(line):
-                        match = self._regexFromImport.match(line)
-                        if match:
-                            module = match.group(1)
-                            imports = [s.strip() for s in match.group(2).split(",")]
-                            for imp in imports:
-                                newlines.append("from {} import {}".format(module, imp))
-                            continue
+                    match = self._regexFromImport.match(line)
+                    if match:
+                        module = match.group(1)
+                        imports = [s.strip() for s in match.group(2).split(",")]
+                        for imp in imports:
+                            newlines.append("from {} import {}".format(module, imp))
+                        continue
                 else:
                     maybeEndGroup()
                 newlines.append(line)
+            lines = newlines
 
         maybeEndGroup()
 
         # sort each group
         if sortImportStatements:
-            lines = newlines
             for start, end in self.groups:
                 lines[start:end] = sorted(lines[start:end], key=self.importOrder)
 
