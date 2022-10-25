@@ -126,6 +126,13 @@ class FixImports(object):
                         for imp in imports:
                             newlines.append("from {} import {}".format(module, imp))
                         continue
+
+                    match = self._regexImport.match(line)
+                    if match:
+                        modules = [s.strip() for s in match.group(1).split(",")]
+                        for module in modules:
+                            newlines.append("import {}".format(module))
+                        continue
                 else:
                     maybeEndGroup()
                 newlines.append(line)

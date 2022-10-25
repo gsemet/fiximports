@@ -56,6 +56,12 @@ class TestFixImport(unittest.TestCase):
 
     def test_split_import(self):
         self.assertSortImports(
+            "import b, a\n",
+            "import a\nimport b\n",
+        )
+
+    def test_split_from_import(self):
+        self.assertSortImports(
             "from m import b, c\n",
             "from m import b\nfrom m import c\n",
         )
