@@ -1,0 +1,5 @@
+- id: fiximports
+  name: Fix imports
+  entry: fiximports
+  language: python
+  types: [python]

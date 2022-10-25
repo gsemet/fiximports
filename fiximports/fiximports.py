@@ -88,7 +88,7 @@ class FixImports(object):
         '''
         lines = data.split("\n")
         res = True
-        for cur_line_nb, line in enumerate(lines):
+        for cur_line_nb, line in enumerate(lines, 1):
             if not self.analyzeLine(filename, line, cur_line_nb):
                 if not self.isBadLineFixable(line):
                     res = False
@@ -106,37 +106,42 @@ class FixImports(object):
                 self.group_start = None
 
         if splitImportStatements:
-            iter = six.next(lines)
+            it_lines = iter(lines)
             while True:
-                line = line.strip()
                 try:
-                    line = six.next()
+                    line = six.next(it_lines)
                 except StopIteration:
                     break
                 if self.isImportLine(line):
                     # join any continuation lines (\\)
                     while line[-1] == '\\':
-                        line = line[:-1] + six.next()
+                        line = line[:-1] + six.next(it_lines)
                     if self.group_start is None:
                         self.group_start = len(newlines)
 
-                    if self.isBadLineFixable(line):
-                        match = self._regexFromImport.match(line)
-                        if match:
-                            module = match.group(1)
-                            imports = [s.strip() for s in match.group(2).split(",")]
-                            for imp in imports:
-                                newlines.append("from {} import {}".format(module, imp))
-                            continue
+                    match = self._regexFromImport.match(line)
+                    if match:
+                        module = match.group(1)
+                        imports = [s.strip() for s in match.group(2).split(",")]
+                        for imp in imports:
+                            newlines.append("from {} import {}".format(module, imp))
+                        continue
+
+                    match = self._regexImport.match(line)
+                    if match:
+                        modules = [s.strip() for s in match.group(1).split(",")]
+                        for module in modules:
+                            newlines.append("import {}".format(module))
+                        continue
                 else:
                     maybeEndGroup()
                 newlines.append(line)
+            lines = newlines
 
         maybeEndGroup()
 
         # sort each group
         if sortImportStatements:
-            lines = newlines
             for start, end in self.groups:
                 lines[start:end] = sorted(lines[start:end], key=self.importOrder)
 
@@ -172,22 +177,27 @@ def main():
 
     parser = argparse.ArgumentParser(description='Fix Python Import Statements')
     parser.add_argument('filename', metavar='FILENAME',
-                        help='Path or glob of Python files to fix')
+                        help='Path of Python files to fix', nargs='+')
 
     args = parser.parse_args()
-    filename = args.filename
 
-    with open(filename, 'r') as filedesc:
-        data = filedesc.read()
-    res, content = FixImports().sortImportGroups(filename, data)
-    if not res:
-        return 1
+    errors = False
+    for filename in args.filename:
+        with open(filename, 'r') as filedesc:
+            data = filedesc.read()
 
-    with open(filename, 'w') as filedesc:
-        filedesc.write(content)
-    if data != content:
-        print("import successfully reordered for file: %s" % (filename))
-    return 0
+        res, content = FixImports().sortImportGroups(filename, data)
+        if not res:
+            errors = True
+            continue
+
+        with open(filename, 'w') as filedesc:
+            filedesc.write(content)
+        if data != content:
+            print("import successfully reordered for file: %s" % (filename))
+
+    return 1 if errors else 0
+
 
 if __name__ == "__main__":
     sys.exit(main())
